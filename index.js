@@ -1,23 +1,8 @@
-
-
-// addEventListener(typ zdarzenia, obiekt powiadamiany gdy nastąpi zdarzenie)
-// Jeżeli w nawiasach planujemy wpisać funkcję to podajemy ją bez nawiasów bo inaczej od razu się wywoła
-
-
-// Wykrywanie Naciśnięcia Przycisku
 var numberOfDrumButtons = document.querySelectorAll(".drum").length;
 
 for (var i = 0; i < numberOfDrumButtons; i++) {
 
 document.querySelectorAll(".drum")[i].addEventListener("click", function() {
-  // this zwraca element który wywołał listenera
-
-  // zwróci tekst z przycisku który został naciśnięty
-  // console.log(this.innerHTML);
-
-  // wygeneruje dźwięk po naciśnięciu przycisku
-  // var audio = new Audio("sounds/crash.mp3");
-  // audio.play();
 
   var buttonInnerHTML = this.innerHTML;
 
@@ -28,14 +13,8 @@ document.querySelectorAll(".drum")[i].addEventListener("click", function() {
 });
 }
 
-
-
-// Wykrywanie Naciśnięcia Klawisza
-
-// Dodajemy tego listenera do całego dokumentu, bo wtedy cała strona zaczyna nasłuchiwać kliknięcia klawisza a nie tylko jeden element
 document.addEventListener("keydown", function(event) {
 
-  // przekazujemy funkcji wygenerowane zdarzenie i dzięki temu możemy korzystać z jego właściwości takich jak np. key - który klawisz został wciśnięty
 
    makeSound(event.key);
 
@@ -86,14 +65,12 @@ function makeSound(key) {
   }
 }
 
-
 function buttonAnimation(currentKey) {
 
   var activeButton = document.querySelector("."+ currentKey);
 
   activeButton.classList.add("pressed");
 
-// Wykonuje funkcję po odliczeniu podanego czasu
   setTimeout(function() {
     activeButton.classList.remove("pressed");
   }, 100);
